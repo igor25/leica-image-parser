@@ -82,17 +82,13 @@ def main ():
         exit()
 
     # Folder with images from Mark and Find
-    # image_folder = '/Temp/Mark_and_Find_001/'
     image_folder = sys.argv[1]
-    # output_folder = '/Temp/confocal_2016-06-27_stitched/'
     output_folder = sys.argv[4]
 
     # Specify number of clusters (grouped xy positions) to find using KMeans
-    # no_clusters = 3
     no_clusters = sys.argv[2]
 
     # XML file with meta data
-    # xml_filename = 'xypositions_new.maf'
     xml_filename = sys.argv[3]
 
     # Input variables (optional; good defaults assumed)
@@ -117,8 +113,6 @@ def main ():
     identity = string.maketrans('', '')
     nondigits = allchars.translate(identity, string.digits)
 
-
-
     # Extract xy positions
     xy_positions_from_id = xy_from_xml(xml_filename)
 
@@ -126,11 +120,7 @@ def main ():
     # actual image ID is going to be just array index + 1
     image_groups = KMeans(no_clusters, random_state=13).fit_predict(xy_positions_from_id)
 
-    # for group in set(image_groups)
-
-    for group in set(image_groups):
-
-        # group = 0
+    for group in set(image_groups): # Do this for each image group
 
         # Extract time points
         ts = set([int(filename.split('_')[1].translate(identity, nondigits))
@@ -154,10 +144,7 @@ def main ():
         xy_max = [max(xys, key=itemgetter(1))[1], max(xys, key=itemgetter(2))[2]]
         stitched_size = [int(ceil((xy_max[i]+im_size_um[i])*xy_um_to_px[i])) for i in range(len(xy_max))]
 
-        # Do this for each t (iterate over z)
-        # ts = set([10, 50, 90])
-
-        for t in ts:
+        for t in ts: # Do this for each t (iterate over z)
 
             print 'colony: '+str(group).zfill(2)+', time point: '+str(t).zfill(3)+' stitching... '
             sys.stdout.flush()
