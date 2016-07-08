@@ -22,7 +22,7 @@ This creates a folder ``/Temp/confocal_2016-06-27_stitched/`` and within it a se
 
 ## Build 3D projections
 
-Next, ImageJ script [imagej_macro.ijm](imagej_macro.ijm) uses [3D viewer](http://3dviewer.neurofly.de/) to make 3D projections from these images and then saves a specific projection (for now just the top).
+Next, ImageJ script [imagej_macro.ijm](imagej_macro.ijm) uses [3D viewer](http://3dviewer.neurofly.de/) to make 3D projections from these images and then saves a specific projection (for now just the top). In order for JVM not to keep eating up more and more RAM, configure ImageJ with a G1 garbage collector, i.e. add ``-XX:+UseG1GC`` to ``C:\Program Files\ImageJ\ImageJ.cfg``.
 
 To do: write the code to be able to run from a batch script from command line.
 
