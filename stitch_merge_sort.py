@@ -10,9 +10,6 @@ clustering to figure out which image is in which cluster, then for each cluster 
 the images together using the provided meta data, combine red and green channels and output
 images sorted first by the time taken and then by the z height.
 
-I gave up trying to output image sequences
-
-
 Required Python libraries: SciKit Learn, PIL, numpy, ElementTree
 
 Usage: python stitch_merge_sort.py <input_mark_and_find_folder> <number_of_colonies> <leica_maf_xml> <output_folder>
