@@ -33,21 +33,11 @@ crop_y = 392;
 crop_w = 1866;
 crop_h = 1598;
 
-/* output resolution for colony 02 (2016-06-27)
-res_x = 2288
-res_y = 2379
-*/
-
-// output resolution for colony 01 (2016-06-27)
-// we should extract this once we load the files from the first file to avoid typing it here
-// res_x = 2024
-// res_y = 2457
-
 // extract time directories
 time_dirs = getFileList(work_dir);
 
 // iterate through time points
-for (i=72; i<=time_dirs.length; i=i+1) {
+for (i=1; i<=time_dirs.length; i=i+1) {
 	// open image stack
 	time_string = substring(time_dirs[i-1], 0, 8);
 	run("Image Sequence...", "open="+work_dir+time_string+"\\000.png sort");
