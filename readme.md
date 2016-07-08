@@ -1,16 +1,19 @@
 # Cluster images, combine and make animations from arbitrary Leica confocal slices
 
+![stitching](images/stitching_example.png)
+![files](images/sorted_files.png)
+
 ![colony2](animations/colony_00_ani.gif)
 ![colony2](animations/colony_02_ani.gif)
 
 We start by knowing the number of colonies we're recording and having:
 
-1. ``Mark_and_Find_XXX/`` folder
+1. ``Mark_and_Find_XXX/`` folder. It can (and usually does) contain Mark and Find position in order in which they've been selected in Leica software.
 2. ``xypositions.maf`` XML file with all xy positions
 
 ## Cluster, stitch, merge, sort images
 
-Python script [stitch_merge_sort.py](stitch_merge_sort.py) stitches xy positions, combines red and green color channels, sort images by z slices, then sort by time points. Image groups corresponding to pictures for a each colony to be stitched are identified using K-means clustering where we specify k in advance since we know how many colonies we're recording. xyz coordinates are extracted from the XML file. Alternatively, they're available in the ``MetaData`` folder for each image in ``Mark_and_Find_XXX`` folder.
+Python script [stitch_merge_sort.py](stitch_merge_sort.py) stitches xy positions, combines red and green color channels, sort images by z slices, then sort by time points. Image groups corresponding to pictures for each colony to be stitched are identified using K-means clustering where we specify k in advance since we know how many colonies we're recording. xyz coordinates are extracted from the XML file. Alternatively, they're available in the ``MetaData`` folder for each image in ``Mark_and_Find_XXX`` folder.
 
 Run it for example:
 
@@ -22,7 +25,7 @@ This creates a folder ``/Temp/confocal_2016-06-27_stitched/`` and within it a se
 
 ## Build 3D projections
 
-Next, ImageJ script [imagej_macro.ijm](imagej_macro.ijm) uses [3D viewer](http://3dviewer.neurofly.de/) to make 3D projections from these images and then saves a specific projection (for now just the top). In order for JVM not to keep eating up more and more RAM, configure ImageJ with a G1 garbage collector, i.e. add ``-XX:+UseG1GC`` to ``C:\Program Files\ImageJ\ImageJ.cfg``.
+Next, ImageJ script [imagej_macro.ijm](imagej_macro.ijm) uses [3D viewer](http://3dviewer.neurofly.de/) to make 3D projections from these images and then saves a specific projection (for now just the top). In order for JVM not to keep eating up more and more RAM, configure ImageJ with a G1 garbage collector, i.e. add ``-XX:+UseG1GC`` to ``C:\Program Files\ImageJ\ImageJ.cfg``. Note: I couldn't get 3D viewer to work on ImageJ Fiji so I used vanilla ImageJ and installed 3D viewer manually.
 
 To do: write the code to be able to run from a batch script from command line.
 
