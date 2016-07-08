@@ -1,7 +1,6 @@
 # Cluster images, combine and make animations from arbitrary Leica confocal slices
 
 ![colony2](animations/colony_00_ani.gif)
-![colony2](animations/colony_01_ani.gif)
 ![colony2](animations/colony_02_ani.gif)
 
 We start by knowing the number of colonies we're recording and having:
