@@ -1,6 +1,7 @@
-# Cluster images, combine them, make animations from arbitrary confocal slices
+# Cluster images, combine them and make animations from arbitrary confocal slices
 
 We start by knowing the number of colonies we're recording and having:
+
 1. ``Mark_and_Find_XXX/`` folder
 2. ``xypositions.maf`` XML file with all xy positions
 
@@ -21,3 +22,7 @@ This creates a folder ``/Temp/confocal_2016-06-27_stitched/`` and within it a se
 Next, ImageJ script [imagej_macro.ijm](imagej_macro.ijm) uses [3D viewer](http://3dviewer.neurofly.de/) to make 3D projections from these images and then saves a specific projection (for now just the top).
 
 To do: write the code to be able to run from a batch script from command line.
+
+## Making animations
+
+Upload a series of time point images from ImageJ to [gifmaker.me](http://gifmaker.me) then resize if needed.
