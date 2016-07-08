@@ -43,10 +43,6 @@ Created on Mon Jun 27 16:13:42 2016
 @author: Igor
 """
 
-# Remove all variables
-# import sys
-# sys.modules[__name__].__dict__.clear()
-
 from PIL import Image
 from math import ceil
 from operator import itemgetter
@@ -149,8 +145,6 @@ def main ():
             print 'colony: '+str(group).zfill(2)+', time point: '+str(t).zfill(3)+' stitching... '
             sys.stdout.flush()
 
-            # Create a big numpy 3D array to hold all frames
-            # 3 is for RGB
             for z in zs: # Iterate through different z slices
 
                 stitched_im_channels = []
